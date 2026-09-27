@@ -35,4 +35,39 @@ const SUPABASE_PUBLISHABLE_KEY = sb_publishable_MSV02btrD_lKOfRN7Ksnpg_UzMxi9vC
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
-);
+);function showAuth(mode) {
+  const email = prompt(
+    mode === "login"
+      ? "Enter your email:"
+      : "Enter your email for your new account:"
+  );
+
+  if (!email) return;
+
+  const password = prompt("Enter your password:");
+  if (!password) return;
+
+  if (mode === "signup") {
+    supabaseClient.auth.signUp({
+      email: email,
+      password: password
+    }).then(({ data, error }) => {
+      if (error) {
+        showToast(error.message);
+      } else {
+        showToast("Account created successfully!");
+      }
+    });
+  } else {
+    supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    }).then(({ data, error }) => {
+      if (error) {
+        showToast(error.message);
+      } else {
+        showToast("Logged in successfully!");
+      }
+    });
+  }
+}
