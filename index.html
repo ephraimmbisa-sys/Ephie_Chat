@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b7cff">
+  <title>Ephie Chat — Connect, Share, Discover</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">💬</div>
+        <div>
+          <div class="brand-name">Ephie <span>Chat</span></div>
+          <small>Connect • Share • Discover • Opportunities</small>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button aria-label="Search" onclick="showToast('Search is coming next.')">⌕</button>
+        <button aria-label="Notifications" onclick="showToast('No new notifications.')">♧</button>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="screen active" id="home">
+        <div class="welcome">
+          <div class="avatar">EM</div>
+          <div>
+            <h2>Good morning, Ephraim</h2>
+            <p>Stay connected. Great things await!</p>
+          </div>
+        </div>
+
+        <div class="composer card">
+          <button class="composer-input" onclick="openPostComposer()">What's happening?</button>
+          <div class="composer-actions">
+            <button onclick="openPostComposer('photo')">🖼️ <span>Photo</span></button>
+            <button onclick="openPostComposer('video')">🎥 <span>Video</span></button>
+            <button onclick="openPostComposer('anonymous')">🕵️ <span>Anonymous</span></button>
+          </div>
+        </div>
+
+        <article class="post card">
+          <div class="post-head">
+            <div class="avatar small">BT</div>
+            <div><strong>Better Tomorrow</strong><small>2 hours ago · 🌐 Public</small></div>
+            <button class="more">•••</button>
+          </div>
+          <p>Small steps create big changes. Keep pushing towards your goals. Your future is worth it!</p>
+          <div class="tags">#Motivation #Growth #BetterDays</div>
+          <div class="post-image">🌅</div>
+          <div class="post-actions">
+            <button onclick="likePost(this)">♡ <span>24</span></button>
+            <button onclick="showToast('Comments will be connected to the database next.')">💬 <span>6</span></button>
+            <button onclick="showToast('Share link copied (demo).')">↗ Share</button>
+          </div>
+        </article>
+
+        <section class="jobs-preview">
+          <div class="section-title">
+            <div><span class="section-icon">💼</span><div><h3>New Vacancies</h3><p>Explore the latest opportunities.</p></div></div>
+            <button onclick="navigate('jobs')">See all →</button>
+          </div>
+          <div class="job-card card">
+            <div>
+              <h3>Accounting Assistant</h3>
+              <p>Sunrise Business Solutions</p>
+              <div class="job-meta">📍 Blantyre &nbsp; · &nbsp; Full-time</div>
+            </div>
+            <button class="primary" onclick="showToast('Application flow will be connected next.')">Apply</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" id="chats">
+        <div class="page-heading"><h1>Chats</h1><button onclick="showToast('New chat coming next.')">＋</button></div>
+        <div class="searchbox">🔍 Search chats</div>
+        <div class="chat-list">
+          <div class="chat-item" onclick="openChat('Sarah')"><div class="avatar">SA</div><div><strong>Sarah</strong><p>Hey! How are you?</p></div><small>10:42</small></div>
+          <div class="chat-item" onclick="openChat('SAEFFE Team')"><div class="avatar">ST</div><div><strong>SAEFFE Team</strong><p>New project update</p></div><small>09:18</small></div>
+          <div class="chat-item" onclick="openChat('Job Opportunities')"><div class="avatar">JO</div><div><strong>Job Opportunities</strong><p>3 new vacancies today</p></div><small>Yesterday</small></div>
+        </div>
+      </section>
+
+      <section class="screen" id="create">
+        <div class="page-heading"><h1>Create</h1></div>
+        <div class="create-grid">
+          <button class="create-tile" onclick="openPostComposer()">📝<strong>Post</strong><span>Share an update</span></button>
+          <button class="create-tile" onclick="openPostComposer('photo')">📸<strong>Photo</strong><span>Share a picture</span></button>
+          <button class="create-tile" onclick="openPostComposer('video')">🎬<strong>Video</strong><span>Share a video</span></button>
+          <button class="create-tile" onclick="openPostComposer('anonymous')">🕵️<strong>Anonymous</strong><span>Post privately</span></button>
+          <button class="create-tile" onclick="navigate('jobs')">💼<strong>Vacancy</strong><span>Post a job</span></button>
+          <button class="create-tile" onclick="showToast('Community creation will be added next.')">👥<strong>Community</strong><span>Start a group</span></button>
+        </div>
+      </section>
+
+      <section class="screen" id="jobs">
+        <div class="page-heading"><div><h1>Jobs</h1><p>Vacancies and opportunities</p></div><button onclick="showToast('Employer tools will be added next.')">＋</button></div>
+        <div class="searchbox">🔍 Search jobs</div>
+        <article class="job-full card"><span class="badge">NEW</span><h2>Accounting Assistant</h2><p><strong>Sunrise Business Solutions</strong></p><p>📍 Blantyre &nbsp; · &nbsp; Full-time</p><p>Support bookkeeping, reconciliations and basic financial reporting.</p><button class="primary wide" onclick="showToast('Application flow is a demo for now.')">Apply for this job</button></article>
+        <article class="job-full card"><h2>Procurement Graduate Trainee</h2><p><strong>Community Development Organisation</strong></p><p>📍 Chikwawa &nbsp; · &nbsp; Full-time</p><p>Entry-level opportunity for graduates and final-year students.</p><button class="primary wide" onclick="showToast('Application flow is a demo for now.')">View vacancy</button></article>
+      </section>
+
+      <section class="screen" id="profile">
+        <div class="profile-hero">
+          <div class="profile-avatar">EM</div>
+          <h1>Ephraim M'bisa</h1>
+          <p>Founder of Ephie Chat</p>
+          <small>Connect • Share • Discover • Opportunities</small>
+          <button class="outline" onclick="showToast('Profile editing will be connected next.')">Edit profile</button>
+        </div>
+        <div class="profile-menu card">
+          <button>⚙️ Account & Privacy <span>›</span></button>
+          <button>🔔 Notifications <span>›</span></button>
+          <button>🛡️ Safety & Reporting <span>›</span></button>
+          <button>❓ Help & Support <span>›</span></button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav active" data-screen="home" onclick="navigate('home')">⌂<span>Home</span></button>
+      <button class="nav" data-screen="chats" onclick="navigate('chats')">◯<span>Chats</span></button>
+      <button class="nav create-btn" data-screen="create" onclick="navigate('create')">＋</button>
+      <button class="nav" data-screen="jobs" onclick="navigate('jobs')">▣<span>Jobs</span></button>
+      <button class="nav" data-screen="profile" onclick="navigate('profile')">♙<span>Profile</span></button>
+    </nav>
+  </div>
+
+  <div class="modal" id="composerModal">
+    <div class="modal-box">
+      <button class="close" onclick="closeModal()">×</button>
+      <h2>Create a post</h2>
+      <label class="toggle"><input id="anonymousToggle" type="checkbox"> Post anonymously</label>
+      <textarea id="postText" placeholder="What's happening?"></textarea>
+      <div class="upload-row">
+        <button onclick="showToast('Photo picker will be connected to storage.')">📷 Add photo</button>
+        <button onclick="showToast('Video picker will be connected to storage.')">🎥 Add video</button>
+      </div>
+      <button class="primary wide" onclick="publishDemoPost()">Publish</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
