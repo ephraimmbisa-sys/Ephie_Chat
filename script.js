@@ -26,3 +26,13 @@ function likePost(btn){
   if(!btn.dataset.liked){n++;btn.dataset.liked="1";btn.innerHTML="♥ <span>"+n+"</span>"}
 }
 function openChat(name){showToast("Opening chat with "+name+" — real-time messaging is next.")}
+
+
+// Supabase connection
+const SUPABASE_URL = "https://crbbkbnvyksakraryiqr.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = sb_publishable_MSV02btrD_lKOfRN7Ksnpg_UzMxi9vC
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
